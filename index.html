@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ukwala Supermarket Reopening – Application Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="ukwala-header">
+    <img src="images/ukwala-logo.jpeg" alt="Ukwala Supermarket Logo" class="ukwala-logo" />
+    <h1 class="ukwala-title">Ukwala Supermarket Reopening</h1>
+  </header>
+
+  <!-- ===== Main Section ===== -->
+  <main class="container">
+    <section class="intro">
+      <h2>Job Application Instructions</h2>
+      <p>
+        Congratulations! You have been shortlisted for employment at <strong>Ukwala Supermarket</strong> as part of our grand reopening.
+      </p>
+      <ul>
+        <li>Bring your <strong>original certificates</strong> for verification.</li>
+        <li>Submit your <strong>uniform measurements</strong> below before <strong>04/11/2025 at 5:00 PM</strong>.</li>
+        <li>Send <strong>Ksh 5,000</strong> for your printed uniforms via M-Pesa to <strong>0713414343</strong>.</li>
+        <li>After payment, <strong>forward your M-Pesa message</strong> to the same number.</li>
+       <li><strong>DEADLINE ALERT</strong>: If sizes and payment are not submitted by<strong> 04/11/2025 at 5 PM, your position will be given to someone else</strong>.</li>
+      </ul>
+      <p>
+        You will later receive your <strong>staff number and reporting time</strong> via email. Grand reopening is on <strong>07/11/2025</strong> across all branches.
+      </p>
+    </section>
+
+    <section class="form-section">
+      <h2>Submit Your Details</h2>
+      <form id="applicantForm">
+        <label>Full Name:</label>
+        <input type="text" name="fullname" required placeholder="Enter your full name" />
+
+        <label>Email Address:</label>
+        <input type="email" name="email" required placeholder="Enter your email" />
+
+        <label>Phone Number:</label>
+        <input type="tel" name="phone" required placeholder="07XXXXXXXX" />
+
+        <label>Position Offered:</label>
+        <input type="text" name="position" required placeholder="e.g., Cashier, Store Clerk" />
+
+        <label>Shirt Size (in inches or cm):</label>
+        <input type="number" name="shirt" step="0.5" placeholder="e.g., 38.5" required />
+
+        <label>Trouser Size (in inches or cm):</label>
+        <input type="number" name="trouser" step="0.5" placeholder="e.g., 32.0" required />
+
+        <label>Shoe Size:</label>
+        <input type="number" name="shoes" step="0.5" placeholder="e.g., 9.5" required />
+
+        <button type="submit" class="submit-btn">Submit Details</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="ukwala-footer">
+    <div class="ukwala-footer-inner">
+      <p>© 2025 Ukwala Supermarket. All Rights Reserved.</p>
+      <p class="ukwala-footer-sub">Human Resource Department | Reopening Project</p>
+      <p class="ukwala-footer-sub">
+        For inquiries: <a href="mailto:hr@ukwalasupermarket.co.ke" class="ukwala-footer-link">hr@ukwalasupermarket.co.ke</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('applicantForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = Object.fromEntries(new FormData(this).entries());
+      const existing = JSON.parse(localStorage.getItem('ukwalaApplicants') || '[]');
+      existing.push(formData);
+      localStorage.setItem('ukwalaApplicants', JSON.stringify(existing));
+      alert('Details submitted successfully! Remember to send your M-Pesa message to 0713414343.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
